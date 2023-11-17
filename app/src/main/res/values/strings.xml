@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Skripsi</string>
+    <string name="nama">nama mahasiswa</string>
+    <string name="nim_mhs">NIM</string>
+    <string name="konsentrasi_mhs">Konsentrasi</string>
+    <string name="judul_skripsi">Judul Skripsi</string>
+    <string name="haris">Haris Setyawan</string>
+    <string name="dwi">Skripsi</string>
+    <string name="aprilia">Skripsi</string>
+    <string name="back_button">Kembali</string>
+    <string name="confirm">Konfirmasi</string>
+    <string name="next">Next</string>
+    <string name="cancel">Back</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_back">Back</string>
+</resources>
