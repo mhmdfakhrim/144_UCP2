@@ -93,7 +93,7 @@ fun FormulirApp(
                 HalamanForm(
                     pilihanDosen = dosen.map { id ->
                         context.resources.getString(id) },
-                    onSelectionChanged = { viewModel.setDosen(it) },
+                    onSelectionChanged = { viewModelForm.setDosen(it) },
                     onSubmitButtonClicked = {
                         viewModelForm.setBiodata(it)
                         navController.navigate(PengelolaHalaman.Summary.name)
