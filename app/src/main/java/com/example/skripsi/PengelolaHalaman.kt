@@ -26,7 +26,6 @@ import com.example.skripsi.data.SumberData.dosen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.skripsi.data.PengajuanUIState
 
 enum class PengelolaHalaman{
     Home,
@@ -63,6 +62,7 @@ fun FormulirAppBar(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormulirApp(
+    viewModel: TampilViewModel = viewModel(),
     viewModelForm: TampilViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ){
@@ -75,7 +75,7 @@ fun FormulirApp(
             )
         }
     ){ innerPadding ->
-        val uiStateForm by viewModelForm.stateUIForm.collectAsState()
+        val uiState by viewModel.stateUI.collectAsState()
         NavHost(
             navController = navController,
             startDestination = PengelolaHalaman.Home.name,
@@ -107,19 +107,26 @@ fun FormulirApp(
             }
             composable(route = PengelolaHalaman.Summary.name) {
                 HalamanHasil(
-                    pengajuanUIState = uiStateForm,
+                    pengajuanUIState = uiState,
 
                     onCancelButtonClicked = {
-                        cancelOrderAndNavigateToForm(navController) },
-                )
+                        cancelAndNavigateToForm(
+                            viewModel,
+                            navController,
+                        )
+                    }
+                    )
+            }
+
             }
         }
     }
-}
 
-private fun cancelOrderAndNavigateToForm(
+
+private fun cancelAndNavigateToForm(
     viewModel: TampilViewModel,
     navController: NavHostController
 ){
+    viewModel.resetForm()
     navController.popBackStack(PengelolaHalaman.Form.name, inclusive = false)
 }

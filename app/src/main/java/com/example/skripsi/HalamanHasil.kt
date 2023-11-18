@@ -25,6 +25,9 @@ fun HalamanHasil (
     onCancelButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ){
+    val items = listOf(
+        Pair(stringResource(R.string.dosens), pengajuanUIState.dosen)
+    )
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween
@@ -63,6 +66,14 @@ fun HalamanHasil (
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
                 Divider(thickness = dimensionResource(R.dimen.thickness_divider))
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+            }
+            items.forEach{ item ->
+                Column{
+                    Text(item.first.uppercase())
+                    Text(text = item.second.toString(), fontWeight =
+                    FontWeight.Bold)
+                }
+                Divider(thickness = dimensionResource(R.dimen.thickness_divider))
             }
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
         }

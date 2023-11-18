@@ -59,7 +59,7 @@ fun HalamanHome(
 
                     )
                 Text(
-                    text = "es teh",
+                    text = "UMY",
                     color = Color.DarkGray,
                     fontFamily = FontFamily.Cursive,
                     fontSize = 35.sp,
@@ -67,7 +67,7 @@ fun HalamanHome(
                         .align(Alignment.CenterHorizontally)
                 )
                 Text(
-                    text = "Gembrunggung",
+                    text = "Skripsi",
                     color = Color.DarkGray,
                     fontFamily = FontFamily.Cursive,
                     fontSize = 60.sp,

@@ -5,12 +5,14 @@
     <string name="konsentrasi_mhs">Konsentrasi</string>
     <string name="judul_skripsi">Judul Skripsi</string>
     <string name="haris">Haris Setyawan</string>
-    <string name="dwi">Skripsi</string>
-    <string name="aprilia">Skripsi</string>
+    <string name="dwi">Dwi Joko</string>
+    <string name="aprilia">Aprilia Kurnianti</string>
     <string name="back_button">Kembali</string>
     <string name="confirm">Konfirmasi</string>
     <string name="next">Next</string>
     <string name="cancel">Back</string>
+    <string name="dosens">Dosen Pembimbing</string>
     <string name="btn_submit">Submit</string>
+    <string name="formulir">Formulir</string>
     <string name="btn_back">Back</string>
 </resources>

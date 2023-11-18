@@ -7,11 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.ui.text.input.KeyboardType
-
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,8 +25,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Divider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 
 
@@ -55,7 +49,9 @@ fun HalamanForm(
     var judulTxt by remember {
         mutableStateOf("")
     }
-    var listData: MutableList<String> = mutableListOf(namaTxt, nimTxt, konsentrasiTxt, judulTxt)
+    var dosenYgDipilih by remember { mutableStateOf("") }
+
+    var listData: MutableList<String> = mutableListOf(namaTxt, nimTxt, konsentrasiTxt, judulTxt, dosenYgDipilih)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -63,7 +59,7 @@ fun HalamanForm(
         modifier = Modifier.fillMaxSize()
     ) {
 
-        Spacer(modifier = Modifier.height(125.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(text = "Formulir Pengajuan Skripsi", modifier = Modifier.padding(bottom = 25.dp))
 
@@ -77,7 +73,7 @@ fun HalamanForm(
 
         )
 
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         OutlinedTextField(
             value = nimTxt,
@@ -88,7 +84,7 @@ fun HalamanForm(
                 .padding(horizontal = 16.dp)
         )
 
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         OutlinedTextField(
             value = konsentrasiTxt,
@@ -107,10 +103,7 @@ fun HalamanForm(
                 .padding(horizontal = 16.dp)
         )
 
-        Spacer(modifier = Modifier.height(30.dp))
-
-        var rasaYgDipilih by rememberSaveable { mutableStateOf("") }
-        var textJmlBeli by remember { mutableStateOf("") }
+        Spacer(modifier = Modifier.height(10.dp))
 
         Column(
             modifier = Modifier,
@@ -119,17 +112,17 @@ fun HalamanForm(
             Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))) {
                 pilihanDosen.forEach { item ->
                     Row(modifier = Modifier.selectable(
-                        selected = rasaYgDipilih == item,
+                        selected = dosenYgDipilih == item,
                         onClick = {
-                            rasaYgDipilih = item
+                            dosenYgDipilih = item
                             onSelectionChanged(item)
                         }
                     ),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        RadioButton(selected = rasaYgDipilih == item,
+                        RadioButton(selected = dosenYgDipilih == item,
                             onClick = {
-                                rasaYgDipilih = item
+                                dosenYgDipilih = item
                                 onSelectionChanged(item)
                             }
                         )
@@ -148,18 +141,7 @@ fun HalamanForm(
                         .padding(dimensionResource(R.dimen.padding_medium))
                         .weight(1f, false),
                     horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
-                ) {
-                    OutlinedTextField(value = textJmlBeli,
-                        singleLine = true,
-                        shape = MaterialTheme.shapes.large,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.width(150.dp),
-                        label = { Text(text = "jumlah Order") },
-                        onValueChange = {
-                            textJmlBeli = it
-                        }
-                    )
-                }
+                ) {}
                 Divider(
                     thickness = dimensionResource(R.dimen.thickness_divider),
                     modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))

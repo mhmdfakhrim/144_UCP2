@@ -8,11 +8,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class TampilViewModel : ViewModel(){
-    private val _stateUIForm = MutableStateFlow(PengajuanUIState())
-    val stateUIForm: StateFlow<PengajuanUIState> = _stateUIForm.asStateFlow()
+    private val _stateUI = MutableStateFlow(PengajuanUIState())
+    val stateUI: StateFlow<PengajuanUIState> = _stateUI.asStateFlow()
+
 
     fun setBiodata(listData: MutableList<String>){
-        _stateUIForm.update{ stateSaatIni ->
+        _stateUI.update{ stateSaatIni ->
             stateSaatIni.copy(
                 nama = listData[0],
                 nim = listData[1],
@@ -23,8 +24,12 @@ class TampilViewModel : ViewModel(){
     }
 
     fun setDosen(dosenPilihan: String){
-        _stateUIForm.update { stateSaatIni ->
+        _stateUI.update { stateSaatIni ->
             stateSaatIni.copy(dosen = dosenPilihan)
         }
+    }
+
+    fun resetForm(){
+        _stateUI.value = PengajuanUIState()
     }
 }
